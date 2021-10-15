@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const { mongoose } = require('./database')
+const { mongoose } = require('./database');
+var cors = require('cors');
 const app = express();
 
 //Settings
@@ -10,7 +11,7 @@ app.set('port', process.env.PORT || 3000);
 //middlewares
 app.use(morgan('dev'));
 app.use(express.json());
-
+app.use(cors());
 //API Router To-do
 app.use('/api/ToDo', require('./routes/todo.routes'));
 
